@@ -14,18 +14,11 @@ public class GameManager : MonoBehaviour
 
     int currentQuestion = -1;
 
-    // Use this for initialization
     void Start()
     {
         questionsCorrect = new bool[questions.Length];
         foreach (GameObject question in questions) question.SetActive(false);
         startScreen.SetActive(true);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void StartQuiz()
