@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     GameObject startScreen;
     [SerializeField]
     Animator correct, incorrect;
+    [Header("End screen")]
+    [SerializeField]
+    GameObject endScreen;
+    [SerializeField]
+    GameObject[] hintCovers;
 
     bool[] questionsCorrect;
 
@@ -19,6 +24,7 @@ public class GameManager : MonoBehaviour
         questionsCorrect = new bool[questions.Length];
         foreach (GameObject question in questions) question.SetActive(false);
         startScreen.SetActive(true);
+        endScreen.SetActive(false);
     }
 
     public void StartQuiz()
@@ -58,7 +64,11 @@ public class GameManager : MonoBehaviour
 
         else
         {
-            Debug.Log("End reached");
+            endScreen.SetActive(true);
+            for (int i = 0; i < questionsCorrect.Length; i++)
+            {
+                hintCovers[i].SetActive(!questionsCorrect[i]);
+            }
         }
     }
 }
